@@ -1,7 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { GlobalNav } from '@/ui/global-nav'
+import { GlobalNav } from '../ui/global-nav'
+// import { GlobalNav } from '@/ui/global-nav'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -17,7 +18,10 @@ export default function RootLayout({
   return (
     <html lang='en' className='bg-gray-400'>
       <body className='overflow-y-scroll bg-white pb-36'>
-        <GlobalNav />
+      <GlobalNav />
+      {/* <div className="fixed top-0 z-10 flex w-full flex-col border-b border-gray-800 font-semibold bg-blue-600 lg:bottom-0 lg:z-auto lg:w-72 lg:border-b-0 lg:border-r lg:border-gray-800">
+        hello
+      </div> */}
         <div className='lg:pl-72'>
           <div className='mx-auto max-w-4xl space-y-8 bg-blue-500 px-2 pt-20 lg:px-8 lg:py-8'>
             
