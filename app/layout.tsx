@@ -19,9 +19,6 @@ export default function RootLayout({
     <html lang='en' className='bg-gray-400'>
       <body className='overflow-y-scroll bg-white pb-36'>
       <GlobalNav />
-      {/* <div className="fixed top-0 z-10 flex w-full flex-col border-b border-gray-800 font-semibold bg-blue-600 lg:bottom-0 lg:z-auto lg:w-72 lg:border-b-0 lg:border-r lg:border-gray-800">
-        hello
-      </div> */}
         <div className='lg:pl-72'>
           <div className='mx-auto max-w-4xl space-y-8 bg-blue-500 px-2 pt-20 lg:px-8 lg:py-8'>
             
@@ -33,7 +30,7 @@ export default function RootLayout({
             </div>
 
             <div className='bg-vc-border-gradient rounded-lg p-px shadow-lg shadow-black/20'>
-              <div className='rounded-lg bg-black p-3.5 lg:p-6'>{children}</div>
+              <div className='rounded-lg bg-white p-3.5 lg:p-6'>{children}</div>
             </div>
 
           </div>
