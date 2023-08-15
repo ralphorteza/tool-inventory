@@ -7,7 +7,7 @@ export default function ToolForm() {
         New tool
       </header>
       <form className="flex gap-2 flex-col">
-        <label htmlFor="tool-name">tool name: </label>
+        <label htmlFor="tool-name">tool name:</label>
         <input
           type="text"
           name="tool-name"
@@ -19,24 +19,24 @@ export default function ToolForm() {
           name="tool-price"
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
         />
-        <label htmlFor="tool-type">tool type: </label>
+        <label htmlFor="tool-type">tool type:</label>
         <select className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100">
           <option value="hand-tool">hand-tool</option>
           <option value="power-tool">power-tool</option>
         </select>
-        <label htmlFor="tool-desc">description: </label>
+        <label htmlFor="tool-desc">description:</label>
         <input
           type="text"
           name="tool-desc"
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
         />
-        <label htmlFor="tool-model-num">model #: </label>
+        <label htmlFor="tool-model-num">model #:</label>
         <input
           type="text"
           name="tool-model-num"
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
         />
-        <label htmlFor="tool-manafacturer">manafacturer: </label>
+        <label htmlFor="tool-manafacturer">manafacturer:</label>
         <input
           type="text"
           name="tool-manafacturer"
