@@ -1,105 +1,100 @@
-
+"use client";
 import Link from "next/link";
 import { useState, ChangeEvent, FormEvent } from "react";
 
 
-interface ToolFormProps {
-  name: string;
-  price: number;
-  type: string;
-  description: string;
-  model_number: string;
-  manufacturer:  string;
-}
+// interface ToolFormProps {
+//   name: string;
+//   price: number;
+//   type: string;
+//   description: string;
+//   model_number: string;
+//   manufacturer:  string;
+// }
 
-export default function ToolForm({name, price, type, description, model_number, manufacturer}:ToolFormProps) {
-  const [errors, setErrors] = useState({});
-  const [message, setMessage] = useState('');
-  const [form, setForm] = useState({
-    name: "",
-    price: "",
-    type: "",
-    description: "",
-    model_number: "",
-    manufacturer: "",
-  });
+export default function ToolForm() {
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
-    const { name, value, type } = e.currentTarget;
-    setForm(prevForm => {
-      return {
-        ...prevForm,
-        [name]: value
-      }
-    });
-  };
-
-  const handleSubmit =(e: FormEvent) => {
+  async function handleSubmit(e:any) {
     e.preventDefault();
-    console.log(form);
+    const data = {
+      name: String(e.target.name.value),
+      price: String(e.target.name.value),
+      type: String(e.target.name.value),
+      description: String(e.target.name.value),
+      model_number: String(e.target.name.value),
+      manufacturer: String(e.target.name.value),
+    };
+
+    console.log(data);
   }
 
-  return (
+    return (
     <div className="px-8">
       <header className="flex font-semibold justify-center items-center mb-4">
         New tool
       </header>
       <form onSubmit={handleSubmit} className="flex gap-2 flex-col">
+        
         <label htmlFor="tool-name">tool name:</label>
         <input
           type="text"
-          name="tool-name"
+          id="tool-name"
+          name="name"
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
-          // onChange={e => handleChange(e)}
-          onChange={handleChange}
-          value={form.name}
+          minLength={1}
+          maxLength={50}
+          required
         />
-        <label htmlFor="tool-price">price:</label>
+
+        <label htmlFor="price">price:</label>
         <input
-          type="text"
-          name="tool-price"
+          type="number"
+          id="price"
+          name="price"
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
-          // onChange={e => handleChange(e)}
-          onChange={handleChange}
-          value={form.price}
+          required
         />
+
         <label htmlFor="tool-type">tool type:</label>
         <select
+          id="tool-type"
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
-          // onChange={e => handleChange(e)}
-          onChange={handleChange}
-          value={form.type}
+          required
         >
           <option value="hand-tool">hand-tool</option>
           <option value="power-tool">power-tool</option>
         </select>
+
         <label htmlFor="tool-desc">description:</label>
         <input
           type="text"
-          name="tool-desc"
+          name="description"
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
-          // onChange={e => handleChange(e)}
-          onChange={handleChange}
-          value={form.description}
+          minLength={10}
+          maxLength={250}
+          required
         />
+
         <label htmlFor="tool-model-num">model #:</label>
         <input
           type="text"
-          name="tool-model-num"
+          id="tool-model-num"
+          name="model_number"
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
-          // onChange={e => handleChange(e)}
-          onChange={handleChange}
-          value={form.model_number}
+          required
         />
-        <label htmlFor="tool-manafacturer">manafacturer:</label>
+
+        <label htmlFor="tool-manufacturer">manufacturer:</label>
         <input
           type="text"
-          name="tool-manafacturer"
+          id="tool-manufacturer"
+          name="manufacturer"
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
-          // onChange={e => handleChange(e)}
-          onChange={handleChange}
-          value={form.manufacturer}
+          minLength={1}
+          maxLength={50}
+          required
         />
+
         <div className="flex gap-1 justify-end">
           <Link
             href=".."
@@ -117,4 +112,5 @@ export default function ToolForm({name, price, type, description, model_number, 
       </form>
     </div>
   );
+
 }
