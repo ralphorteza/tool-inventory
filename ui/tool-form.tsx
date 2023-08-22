@@ -3,29 +3,34 @@ import Link from "next/link";
 import { useState, ChangeEvent, FormEvent } from "react";
 
 
-// interface ToolFormProps {
-//   name: string;
-//   price: number;
-//   type: string;
-//   description: string;
-//   model_number: string;
-//   manufacturer:  string;
-// }
+interface FormData {
+  name: string;
+  price: string;
+  type: string;
+  description: string;
+  model_number: string;
+  manufacturer: string;
+}
 
 export default function ToolForm() {
 
-  async function handleSubmit(e:any) {
-    e.preventDefault();
-    const data = {
-      name: String(e.target.name.value),
-      price: String(e.target.name.value),
-      type: String(e.target.name.value),
-      description: String(e.target.name.value),
-      model_number: String(e.target.name.value),
-      manufacturer: String(e.target.name.value),
-    };
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    price: "",
+    type: "default",
+    description: "",
+    model_number: "",
+    manufacturer: ""
+  });
 
-    console.log(data);
+  function handleChange(event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value});
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    console.log(formData);
   }
 
     return (
@@ -35,12 +40,13 @@ export default function ToolForm() {
       </header>
       <form onSubmit={handleSubmit} className="flex gap-2 flex-col">
         
-        <label htmlFor="tool-name">tool name:</label>
+        <label htmlFor="name">name:</label>
         <input
           type="text"
-          id="tool-name"
+          id="name"
           name="name"
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
+          onChange={handleChange}
           minLength={1}
           maxLength={50}
           required
@@ -52,44 +58,53 @@ export default function ToolForm() {
           id="price"
           name="price"
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
+          onChange={handleChange}
           required
         />
 
-        <label htmlFor="tool-type">tool type:</label>
+        <label htmlFor="type">type:</label>
         <select
-          id="tool-type"
+          id="type"
+          name="type"
+          onChange={handleChange}
+          defaultValue={"default"}
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
           required
         >
-          <option value="hand-tool">hand-tool</option>
-          <option value="power-tool">power-tool</option>
+          <option value={"default"} disabled> Choose an option </option>
+          <option value={"hand-tool"}>hand-tool</option>
+          <option value={"power-tool"}>power-tool</option>
         </select>
 
-        <label htmlFor="tool-desc">description:</label>
+        <label htmlFor="description">description:</label>
         <input
+          id="description"
           type="text"
           name="description"
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
+          onChange={handleChange}
           minLength={10}
           maxLength={250}
           required
         />
 
-        <label htmlFor="tool-model-num">model #:</label>
+        <label htmlFor="model_num">model #:</label>
         <input
           type="text"
-          id="tool-model-num"
+          id="model_num"
           name="model_number"
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
+          onChange={handleChange}
           required
         />
 
-        <label htmlFor="tool-manufacturer">manufacturer:</label>
+        <label htmlFor="manufacturer">manufacturer:</label>
         <input
           type="text"
-          id="tool-manufacturer"
+          id="manufacturer"
           name="manufacturer"
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
+          onChange={handleChange}
           minLength={1}
           maxLength={50}
           required
