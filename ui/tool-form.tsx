@@ -2,6 +2,10 @@
 import Link from "next/link";
 import { useState, ChangeEvent, FormEvent } from "react";
 
+// TODO:
+// price number validation
+// type default selection
+
 
 interface FormData {
   name: string;
@@ -25,7 +29,9 @@ export default function ToolForm() {
 
   function handleChange(event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value});
+    setFormData(prevFormData => {
+      return { ...formData, [name]: value}
+    });
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -54,7 +60,7 @@ export default function ToolForm() {
 
         <label htmlFor="price">price:</label>
         <input
-          type="number"
+          type="text"
           id="price"
           name="price"
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
@@ -71,7 +77,7 @@ export default function ToolForm() {
           className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
           required
         >
-          <option value={"default"} disabled> Choose an option </option>
+          <option value={"default"} disabled> choose an option </option>
           <option value={"hand-tool"}>hand-tool</option>
           <option value={"power-tool"}>power-tool</option>
         </select>
