@@ -21,7 +21,7 @@ export default function ToolForm() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     price: "",
-    type: "default",
+    type: "n/a",
     description: "",
     model_number: "",
     manufacturer: ""
@@ -30,12 +30,27 @@ export default function ToolForm() {
   function handleChange(event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) {
     const { name, value } = event.target;
     setFormData(prevFormData => {
-      return { ...formData, [name]: value}
+      return { ...formData, [name]: value }
     });
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    try {
+      const response = await fetch('/api/new-tool', {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json"
+        },
+      });
+      
+      if (!response.ok) throw new Error("HTTP ERROR! status: " + response.status);
+      
+    } catch(error: any) {
+      console.log("There was a problem with the fetch operation " + error.message);
+    }
     console.log(formData);
   }
 
