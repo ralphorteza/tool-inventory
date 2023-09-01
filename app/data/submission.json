@@ -22,5 +22,13 @@
     "description": "awe;fklj234",
     "model_number": "d333333434444",
     "manufacturer": "ddk332423432"
+  },
+  {
+    "name": "hello",
+    "price": "asdlfk;alsfkj",
+    "type": "n/a",
+    "description": "sdafjkhfdfewjklahf",
+    "model_number": "asdf;ljfa;lkjdf;lkajsd;lk",
+    "manufacturer": "asdf;ljfasd;lkjsdf"
   }
 ]
