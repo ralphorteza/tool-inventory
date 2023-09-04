@@ -5,6 +5,8 @@ import { useState, ChangeEvent, FormEvent } from "react";
 // TODO:
 // price number validation
 // type default selection
+// status select option
+// date created and modified
 
 
 interface FormData {
@@ -14,6 +16,9 @@ interface FormData {
   description: string;
   model_number: string;
   manufacturer: string;
+  status: string;
+  date_created: string;
+  date_modified: string;
 }
 
 export default function ToolForm() {
@@ -24,7 +29,10 @@ export default function ToolForm() {
     type: "n/a",
     description: "",
     model_number: "",
-    manufacturer: ""
+    manufacturer: "",
+    status: "",
+    date_created:"",
+    date_modified: "",
   });
 
   function handleChange(event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) {
@@ -130,6 +138,20 @@ export default function ToolForm() {
           maxLength={50}
           required
         />
+
+        <label htmlFor="status">status:</label>
+        <input
+          type="text"
+          id="status"
+          name="status"
+          className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
+          onChange={handleChange}
+          minLength={1}
+          maxLength={50}
+          required
+        />
+
+      
 
         <div className="flex gap-1 justify-end">
           <Link
