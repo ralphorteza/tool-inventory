@@ -15,7 +15,7 @@ type Props = { tool: ToolProps}
 
 export const Tool = ({tool}: Props) => {
   return (
-    <div className="flex flex-row border-red-500 border-2 rounded-lg place-content-between items-center py-1 px-2 mb-2">
+    <div className="flex flex-row border-gray-600 border-b-2 place-content-between items-center py-1 px-2 mb-2">
 
       <div className="py-1 px-1">
         <p className="text-sm font-bold">{tool.name}</p>
@@ -25,9 +25,9 @@ export const Tool = ({tool}: Props) => {
       <p className="text-xs text-gray-600">{tool.status}</p>
 
       <div className="flex gap-x-4 text-xs text-gray-600 font-medium">
-        <button className="border-red-500 border-2 rounded-lg px-2 py-0.5">Edit</button>
+        <button className="border-gray-500 border-2 rounded-lg px-2 py-0.5">Edit</button>
       </div>
-      
+
     </div>
   );
 } 
