@@ -13,7 +13,7 @@ interface ToolProps {
 
 type Props = { tool: ToolProps}
 
-export const Tool = ({tool}: Props) => {
+export const Tool = ({ tool }: Props) => {
   return (
     <div className="flex flex-row border-gray-600 border-b-2 place-content-between items-center py-1 px-2 mb-2">
 
