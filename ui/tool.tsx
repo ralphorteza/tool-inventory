@@ -13,18 +13,21 @@ interface ToolProps {
 
 type Props = { tool: ToolProps}
 
-export const Tool = ({tool} : Props) => {
+export const Tool = ({tool}: Props) => {
   return (
-    <div className="flex flex-row justify-between px-8 py-2 border-red-500 border-2 mx-4 mb-4">
-      <div>
+    <div className="flex flex-row border-red-500 border-2 rounded-lg place-content-between items-center py-1 px-2 mb-2">
+
+      <div className="py-1 px-1">
         <p className="text-sm font-bold">{tool.name}</p>
         <p className="text-xs text-gray-600">${tool.price}</p>
-        <p className="text-xs text-gray-600">{tool.description}</p>
       </div>
-      <div className="grid grid-flow-col gap-x-2">
-        <button className="border-red-500 border-2 rounded-md px-2">Edit</button>
-        <button className="border-red-500 border-2 rounded-md px-2">Delete</button>
+
+      <p className="text-xs text-gray-600">{tool.status}</p>
+
+      <div className="flex gap-x-4 text-xs text-gray-600 font-medium">
+        <button className="border-red-500 border-2 rounded-lg px-2 py-0.5">Edit</button>
       </div>
+      
     </div>
   );
-}
+} 
