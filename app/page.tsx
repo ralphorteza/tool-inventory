@@ -1,5 +1,5 @@
 import { Tool } from "@/ui/tool";
-import ToolForm from "@/ui/tool-form";
+import Link from "next/link";
 import { useEffect } from "react";
 
 // TODO 
@@ -41,9 +41,13 @@ export default function Home() {
     }
   ];
   return (
-    <div className="pt-4">
-      <button className="border-red-500 border-2 px-4 py-4 rounded-lg ml-4 mb-4">Add</button>
-      {/* <ToolForm /> */}
+    <div className="flex flex-col pt-4">
+      <Link
+        href={'/add-tool'}
+        className="border-gray-700 border-2 bg-gray-400 rounded-lg py-2 mb-4 text-white text-center font-extrabold"
+      >
+        Add Tool
+      </Link>
       {tools.map((tool) => {
         return (<Tool key={tool._id} tool={tool}/>)
       })}
