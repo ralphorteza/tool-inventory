@@ -39,7 +39,7 @@ export default function ToolForm() {
   });
 
   async function postData(formData: FormData) {
-        try {
+    try {
       const response = await fetch('/api/new-tool', {
         method: "POST",
         body: JSON.stringify(formData),
@@ -57,13 +57,13 @@ export default function ToolForm() {
 
   function formValidate() {
     let err: any = {};
-    if (!formData.name) err.name = "Name is required";
-    if (!formData.price) err.price = "Price is required or input is required";
-    if (!formData.type && formData.type === "n/a") err.type = "Type is required";
-    if (!formData.description) err.description = "Description is required";
-    if (!formData.model_number) err.model_number = "Model # is required";
-    if (!formData.manufacturer) err.manufacturer = "Manufacturer is required";
-    if (!formData.status) err.status = "Status is required";
+    if (!formData.name.trim()) err.name = "Name is required";
+    if (!formData.price.trim()) err.price = "Price is required or input is required";
+    if (!formData.type.trim() && formData.type === "n/a") err.type = "Type is required";
+    if (!formData.description.trim()) err.description = "Description is required";
+    if (!formData.model_number.trim()) err.model_number = "Model # is required";
+    if (!formData.manufacturer.trim()) err.manufacturer = "Manufacturer is required";
+    if (!formData.status.trim()) err.status = "Status is required";
 
     return err;
   }
@@ -80,11 +80,13 @@ export default function ToolForm() {
     
     const errs = formValidate();
 
-    if (Object.keys(errs).length !== 0) {
-      setErrors({ errs });
-    } else {
-      postData(formData);
-    }
+    // if (errs.length !== 0) {
+    //   setErrors({ errs });
+    // } else {
+    //   postData(formData);
+    // }
+    postData(formData);
+    console.log('clicked create!');
   }
 
     return (
@@ -192,7 +194,6 @@ export default function ToolForm() {
             Create
           </button>
           <div>
-
           </div>
         </div>
       </form>

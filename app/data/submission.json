@@ -118,5 +118,27 @@
     "status": "asdfafsdas",
     "date_created": "",
     "date_modified": ""
+  },
+  {
+    "name": "dasfdf",
+    "price": "dasfasdf",
+    "type": "n/a",
+    "description": "asdfdfdasfdsaf",
+    "model_number": "asdffasdsdf",
+    "manufacturer": "asdffasdf",
+    "status": "dasfasdfasf",
+    "date_created": "",
+    "date_modified": ""
+  },
+  {
+    "name": "jksdfhlk;jsdhljk;",
+    "price": "233341445",
+    "type": "hand-tool",
+    "description": "asdfsdfafdsdfa",
+    "model_number": "asdfasdfasd",
+    "manufacturer": "ohipyouipiop;uiop;",
+    "status": ";uioj;oyuiplyioliok;lio00",
+    "date_created": "",
+    "date_modified": ""
   }
 ]
