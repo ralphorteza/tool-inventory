@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, ChangeEvent, FormEvent } from "react";
 
 // TODO:
@@ -12,7 +13,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 interface FormData {
   name: string;
   price: string;
-  type: string;
+  type: "power-tool" | "hand-tool" | "n/a";
   description: string;
   model_number: string;
   manufacturer: string;
@@ -23,6 +24,8 @@ interface FormData {
 
 export default function ToolForm() {
 
+  const[errors, setErrors] = useState({});
+  const router = useRouter();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     price: "",
@@ -35,22 +38,8 @@ export default function ToolForm() {
     date_modified: "",
   });
 
-  function handleChange(event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) {
-    const { name, value } = event.target;
-    setFormData(prevFormData => {
-      return { ...formData, [name]: value }
-    });
-  }
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    if (formData.type === "n/a") {
-      console.log("did not specify type");
-      return;
-    }
-
-    try {
+  async function postData(formData: FormData) {
+        try {
       const response = await fetch('/api/new-tool', {
         method: "POST",
         body: JSON.stringify(formData),
@@ -60,11 +49,42 @@ export default function ToolForm() {
       });
       
       if (!response.ok) throw new Error("HTTP ERROR! status: " + response.status);
-      
+      router.push('/');
     } catch(error: any) {
       console.log("There was a problem with the fetch operation " + error.message);
     }
-    console.log(formData);
+  }
+
+  function formValidate() {
+    let err: any = {};
+    if (!formData.name) err.name = "Name is required";
+    if (!formData.price) err.price = "Price is required or input is required";
+    if (!formData.type && formData.type === "n/a") err.type = "Type is required";
+    if (!formData.description) err.description = "Description is required";
+    if (!formData.model_number) err.model_number = "Model # is required";
+    if (!formData.manufacturer) err.manufacturer = "Manufacturer is required";
+    if (!formData.status) err.status = "Status is required";
+
+    return err;
+  }
+
+  function handleChange(event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) {
+    const { name, value } = event.target;
+    setFormData(prevFormData => {
+      return { ...formData, [name]: value }
+    });
+  }
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    
+    const errs = formValidate();
+
+    if (Object.keys(errs).length !== 0) {
+      setErrors({ errs });
+    } else {
+      postData(formData);
+    }
   }
 
     return (
@@ -171,6 +191,9 @@ export default function ToolForm() {
           >
             Create
           </button>
+          <div>
+
+          </div>
         </div>
       </form>
     </div>

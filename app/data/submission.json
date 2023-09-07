@@ -30,5 +30,93 @@
     "description": "sdafjkhfdfewjklahf",
     "model_number": "asdf;ljfa;lkjdf;lkajsd;lk",
     "manufacturer": "asdf;ljfasd;lkjsdf"
+  },
+  {
+    "name": "    hello",
+    "price": "afss;lsdfasf",
+    "type": "n/a",
+    "description": "You chuck them towards crows. No need for a scarecrow!!",
+    "model_number": "3348324",
+    "manufacturer": "dfafejhafdj;kh",
+    "status": "available",
+    "date_created": "",
+    "date_modified": ""
+  },
+  {
+    "name": "dasfdfafddafsdfasdf",
+    "price": "afss;lsdfasf",
+    "type": "n/a",
+    "description": "You chuck them towards crows. No need for a scarecrow!!",
+    "model_number": "444444",
+    "manufacturer": "dfafejhafdj;kh",
+    "status": "available",
+    "date_created": "",
+    "date_modified": ""
+  },
+  {
+    "name": "dasfdfafddafsdfasdf",
+    "price": "afss;lsdfasf",
+    "type": "n/a",
+    "description": "You chuck them towards crows. No need for a scarecrow!!",
+    "model_number": "444444",
+    "manufacturer": "dfafejhafdj;kh",
+    "status": "available",
+    "date_created": "",
+    "date_modified": ""
+  },
+  {
+    "name": "dasfdfafddafsdfasdf",
+    "price": "afss;lsdfasf",
+    "type": "n/a",
+    "description": "You chuck them towards crows. No need for a scarecrow!!",
+    "model_number": "444444",
+    "manufacturer": "dfafejhafdj;kh",
+    "status": "available",
+    "date_created": "",
+    "date_modified": ""
+  },
+  {
+    "name": "dasfdfafddafsdfasdf",
+    "price": "afss;lsdfasf",
+    "type": "n/a",
+    "description": "You chuck them towards crows. No need for a scarecrow!!",
+    "model_number": "444444",
+    "manufacturer": "dfafejhafdj;kh",
+    "status": "available",
+    "date_created": "",
+    "date_modified": ""
+  },
+  {
+    "name": "sdf;akhfd;fjadk",
+    "price": "sdf;aljfads;",
+    "type": "hand-tool",
+    "description": "dwa;kljfa;lkj",
+    "model_number": "asd;fljf;klqj;lkfje;lk",
+    "manufacturer": ";sdafkjasdf;ljafds;lkj",
+    "status": "dsf;lkjdf;laksfs",
+    "date_created": "",
+    "date_modified": ""
+  },
+  {
+    "name": "sdf;akhfd;fjadk",
+    "price": "sdf;aljfads;",
+    "type": "hand-tool",
+    "description": "dwa;kljfa;lkj",
+    "model_number": "asd;fljf;klqj;lkfje;lk",
+    "manufacturer": ";sdafkjasdf;ljafds;lkj",
+    "status": "dsf;lkjdf;laksfs",
+    "date_created": "",
+    "date_modified": ""
+  },
+  {
+    "name": "asdffadsf",
+    "price": "asdfasdffas",
+    "type": "power-tool",
+    "description": "fadsdfasfd",
+    "model_number": "asdfasdfasdf",
+    "manufacturer": "adfssfdsdfaf",
+    "status": "asdfafsdas",
+    "date_created": "",
+    "date_modified": ""
   }
 ]
