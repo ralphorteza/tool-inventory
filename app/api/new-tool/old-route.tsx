@@ -30,8 +30,3 @@ export async function POST(request: NextRequest) {
     message: "This message has been successfully sent",
   });
 }
-// export async function GET() {
-//   return NextResponse.json({
-//     message: "hello!",
-//   });
-// }

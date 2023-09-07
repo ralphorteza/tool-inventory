@@ -3,12 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, ChangeEvent, FormEvent } from "react";
 
-// TODO:
-// price number validation
-// type default selection
-// status select option
-// date created and modified
-
+// TODO: removed date objects from client-side.
+// TODO: implement client-side form validation.
 
 interface FormData {
   name: string;
@@ -79,12 +75,6 @@ export default function ToolForm() {
     event.preventDefault();
     
     const errs = formValidate();
-
-    // if (errs.length !== 0) {
-    //   setErrors({ errs });
-    // } else {
-    //   postData(formData);
-    // }
     postData(formData);
     console.log('clicked create!');
   }
@@ -199,5 +189,4 @@ export default function ToolForm() {
       </form>
     </div>
   );
-
 }

@@ -23,5 +23,4 @@ const ToolSchema = new mongoose.Schema({
   date_modified: Date,
 });
 
-// module.exports = mongoose.models.Tool || mongoose.model("Tool", ToolSchema);
 export default mongoose.models.Tool || mongoose.model("Tool", ToolSchema);

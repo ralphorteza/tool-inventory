@@ -1,18 +1,8 @@
 import { Tool } from "@/ui/tool";
 import Link from "next/link";
-import { useEffect } from "react";
 
-// TODO 
-// Add tool status, date created/modified into prop
 export default function Home() {
-  // let objects: any[] = [];
-  // useEffect(() => {
-  //   fetch('/api/new-tool')
-  //     .then(res => res.json())
-  //     .then(data => objects)
-  // }, [])
 
-  
   // temporary tools object for prototyping Tool component
   const tools = [
     {
