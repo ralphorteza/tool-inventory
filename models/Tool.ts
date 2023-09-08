@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+// TODO: enumerate 'type' and 'status'
 interface ITool {
     name: string;
     price: number;
