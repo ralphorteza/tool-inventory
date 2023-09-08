@@ -6,38 +6,55 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 // TODO: migrate form to useForm.
 // TODO: removed date objects from client-side.
-// TODO: implement client-side form validation.
+
 enum TypeEnum {
   power_tool = "power-tool",
   hand_tool = "hand-tool",
   electronics = "electronics"
-}
+};
 
 enum StatusEnum {
   available = "available",
   in_use = "in-use",
+  maintenance = "maintenance",
   missing = "missing",
   broken = "broken"
-}
+};
 
 type Inputs = {
   name: string,
   price: string,
-  // type: "power-tool" | "hand-tool" | "electronics" | "n/a",
   type: TypeEnum,
   description: string,
   model_number: string,
   manufacturer: string,
-  // status: "available" | "in-use" | "missing" | "broken"
   status: StatusEnum,
-}
+};
 
 
 
 export default function ToolForm() {
-
+  const router = useRouter();
   const { register, handleSubmit, watch, formState: { errors }} = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+
+  const postData = async (data: Inputs) => {
+    try {
+      const response = await fetch('/api/new-tool', {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        },
+      });
+
+      if (!response.ok) throw new Error("HTTP ERROR! status: " + response.status);
+      router.push("/");
+    } catch(error: any) {
+      console.log("fetch operation failed" + error.message);
+    }
+  }
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => postData(data);
 
   return (
     <div className="px-3">
@@ -105,6 +122,7 @@ export default function ToolForm() {
           <option value="n/a" disabled>--select option--</option>
           <option value="available">available</option>
           <option value="in-use">in-use</option>
+          <option value="maintenance">maintenance</option>
           <option value="missing">missing</option>
           <option value="broken">broken</option>
         </select>

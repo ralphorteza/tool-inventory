@@ -3,6 +3,8 @@ import Link from "next/link";
 
 export default function Home() {
 
+  // TODO: get tool cards from remote db and populate here.
+  
   // temporary tools object for prototyping Tool component
   const tools = [
     {
