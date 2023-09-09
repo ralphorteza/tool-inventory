@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 // TODO: handle date creation for date_created and date_modified
 interface ITool {
+    _id: string,
     name: string;
     price: number;
     type: string;

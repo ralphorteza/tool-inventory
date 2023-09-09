@@ -1,18 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
 import Tool from "@/models/Tool"
+import connectDB from "@/lib/connectdb";
 
 export async function POST(req: NextRequest, res: NextResponse) {
-  const MONGO_URI = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PW}@cluster0.mwd6uuv.mongodb.net/${process.env.MONGODB_PATH}?retryWrites=true&w=majority`;
+  // const MONGO_URI = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PW}@cluster0.mwd6uuv.mongodb.net/${process.env.MONGODB_PATH}?retryWrites=true&w=majority`;
 
-  let client;
+  // let client;
 
-  try {
-    client = await mongoose.connect(MONGO_URI);
-    console.log("mongodb connected");
-  } catch(error) {
-    console.log("There was an error connecting to mongodb", error);
-  }
+  // try {
+  //   client = await mongoose.connect(MONGO_URI);
+  //   console.log("mongodb connected");
+  // } catch(error) {
+  //   console.log("There was an error connecting to mongodb", error);
+  // }
+  await connectDB();
+
 
   const data = await req.json();
   const { 
