@@ -1,4 +1,5 @@
 "use client";
+import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, ChangeEvent, FormEvent } from "react";
@@ -49,6 +50,7 @@ export default function ToolForm() {
 
       if (!response.ok) throw new Error("HTTP ERROR! status: " + response.status);
       router.push("/");
+      revalidatePath("/");
     } catch(error: any) {
       console.log("fetch operation failed" + error.message);
     }
