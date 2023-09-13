@@ -1,3 +1,4 @@
+import Link from "next/link";
 // TODO: remove? date fields.
 interface ToolProps {
   _id: string;
@@ -15,6 +16,7 @@ interface ToolProps {
 type Props = { tool: ToolProps };
 
 export const ToolCard = ({ tool }: Props) => {
+  // console.log(tool.valueOf());
   return (
     <div className="flex flex-row border-gray-600 border-b-2 place-content-between items-center py-1 px-2 mb-2">
 
@@ -26,7 +28,10 @@ export const ToolCard = ({ tool }: Props) => {
       <p className="text-xs text-gray-600">{tool.status}</p>
 
       <div className="flex gap-x-4 text-xs text-gray-600 font-medium">
-        <button className="border-gray-500 border-2 rounded-lg px-2 py-0.5">Edit</button>
+      <Link
+        href={`/tool/${tool._id}`}
+        className="border-gray-500 border-2 rounded-lg px-2 py-0.5">Edit</Link>
+        {/* <button className="border-gray-500 border-2 rounded-lg px-2 py-0.5">Edit</button> */}
       </div>
 
     </div>

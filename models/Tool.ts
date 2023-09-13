@@ -24,6 +24,7 @@ const ToolSchema = new mongoose.Schema({
   },
   description: { type: String, required: true },
   model_number: { type: String, required: true },
+  manufacturer: { type: String, required: true},
   status: {
     type: String,
     required: true,

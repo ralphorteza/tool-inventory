@@ -2,11 +2,7 @@
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, ChangeEvent, FormEvent } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-
-// TODO: migrate form to useForm.
-// TODO: removed date objects from client-side.
 
 enum TypeEnum {
   power_tool = "power-tool",
@@ -32,18 +28,19 @@ type Inputs = {
   status: StatusEnum,
 };
 
-type Props = {
-  newTool: boolean,
-  prepopulate: any,
-};
-
-
-
-export default function ToolForm() {
+// TODO: fix manufacturer null input
+export default function ToolEditForm({tool}: {tool: Inputs}) {
   const router = useRouter();
+  const prefill = tool;
+  console.log(tool);
 
-  const { register, handleSubmit, watch, formState: { errors }} = useForm<Inputs>();
+  const { register, handleSubmit, watch, formState: { errors }} = useForm<Inputs>({
+    defaultValues: {
+      ...tool
+    }
+  });
 
+  // TODO: Change to PUT data as it modifies the item.
   const postData = async (data: Inputs) => {
     try {
       const response = await fetch('/api/new-tool', {
@@ -67,7 +64,7 @@ export default function ToolForm() {
   return (
     <div className="px-3">
       <header className="flex text-lg font-semibold justify-center items-center border-gray-400 border-b-2 mb-3">
-        New Tool
+        Modify Tool
       </header>
 
       <form
@@ -78,7 +75,7 @@ export default function ToolForm() {
         <input
           id="name"
           className="border border-slate-200 bg-transparent rounded px-2 py-1 mb-3 outline-none focus-within:border-slate-400"
-          {...register("name", { required: true })}
+          {...register("name", { required: true, })}
         />
 
         <label htmlFor="price" className="text-sm text-gray-600">price{errors.price && <span className="text-sm text-red-400">*</span>}</label>
@@ -144,8 +141,8 @@ export default function ToolForm() {
           </Link>
           <input
             type="submit"
-            value="Create"
-            className="font-bold text-white bg-gray-500 rounded px-2 py-1 mb-3 outline-none hover:bg-gray-600 focus-within:bg-gray-600"
+            value="Edit"
+            className="font-bold text-white bg-gray-500 rounded px-4 py-1 mb-3 outline-none hover:bg-gray-600 focus-within:bg-gray-600"
           />
         </div>
       </form>
