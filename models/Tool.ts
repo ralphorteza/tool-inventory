@@ -36,3 +36,4 @@ const ToolSchema = new mongoose.Schema({
 });
 
 export default mongoose.models.Tool || mongoose.model("Tool", ToolSchema);
+// module.exports = mongoose.model("Tool", ToolSchema);

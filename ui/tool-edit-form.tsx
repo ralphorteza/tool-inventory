@@ -28,7 +28,8 @@ type Inputs = {
   status: StatusEnum,
 };
 
-// TODO: fix manufacturer null input
+// TODO: PUT router
+// TODO: delete tool
 export default function ToolEditForm({tool}: {tool: Inputs}) {
   const router = useRouter();
   const prefill = tool;
