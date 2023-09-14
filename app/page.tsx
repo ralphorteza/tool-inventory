@@ -9,7 +9,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col pt-4">
       <Link
-        href={'/add-tool'}
+        href={'/tool/new'}
         className="border-gray-700 border-2 bg-gray-400 rounded-lg py-2 mb-4 text-white text-center font-extrabold"
       >
         Add Tool
