@@ -30,10 +30,10 @@ type Inputs = {
 
 // TODO: PUT router
 // TODO: delete tool
-export default function ToolEditForm({tool}: {tool: Inputs}) {
+export default function ToolEditForm({tool, id}: {tool: Inputs, id: String}) {
   const router = useRouter();
   const prefill = tool;
-  console.log(tool);
+  console.log(id);
 
   const { register, handleSubmit, watch, formState: { errors }} = useForm<Inputs>({
     defaultValues: {
@@ -42,10 +42,10 @@ export default function ToolEditForm({tool}: {tool: Inputs}) {
   });
 
   // TODO: Change to PUT data as it modifies the item.
-  const postData = async (data: Inputs) => {
+  const putData = async (data: Inputs) => {
     try {
-      const response = await fetch('/api/new-tool', {
-        method: "POST",
+      const response = await fetch(`api/new-tool`, {
+        method: "PUT",
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json"
@@ -60,7 +60,7 @@ export default function ToolEditForm({tool}: {tool: Inputs}) {
     }
   }
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => postData(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => putData(data);
 
   return (
     <div className="px-3">

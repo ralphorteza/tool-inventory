@@ -22,7 +22,7 @@ export default async function Page(
 
   return (
     <div className="flex flex-col pt-4">
-      <ToolEditForm tool={tool}/>
+      <ToolEditForm tool={tool} id={params.id}/>
     </div>
     
   )
