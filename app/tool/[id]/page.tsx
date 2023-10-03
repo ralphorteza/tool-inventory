@@ -22,7 +22,7 @@ export default async function Page(
     status: toolObj.status,
     date_created: toolObj.date_created,
     date_modified: toolObj.date_modified
-  }
+  };
 
   console.log("inside app/tool/[id]:");
   console.log(tool);

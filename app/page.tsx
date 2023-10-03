@@ -4,8 +4,6 @@ import getServerSideData from "@/lib/getServerSideData";
 
 export default async function Home() {
   const tools = await getServerSideData();
-  // console.log(tools.valueOf());
-  // TODO: get tool cards from remote db and populate here.
   return (
     <div className="flex flex-col pt-4">
       <Link

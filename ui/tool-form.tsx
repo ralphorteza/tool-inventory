@@ -44,6 +44,7 @@ export default function ToolForm() {
 
   const { register, handleSubmit, watch, formState: { errors }} = useForm<Inputs>();
 
+  // TODO: turn code block into a server action instead of old page api route.
   const postData = async (data: Inputs) => {
     try {
       const response = await fetch('/api/new-tool/', {
