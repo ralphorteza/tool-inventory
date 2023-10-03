@@ -46,7 +46,7 @@ export default function ToolForm() {
 
   const postData = async (data: Inputs) => {
     try {
-      const response = await fetch('/app/api/new-tool', {
+      const response = await fetch('/api/new-tool/', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
