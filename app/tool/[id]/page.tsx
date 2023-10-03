@@ -24,6 +24,7 @@ export default async function Page(
     date_modified: toolObj.date_modified
   }
 
+  console.log("inside app/tool/[id]:");
   console.log(tool);
 
   return (

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 import connectDB from "@/lib/connectdb";
 import Tool from "@/models/Tool";
+import EditTool from "@/lib/editTool";
 
 enum TypeEnum {
   power_tool = "power-tool",
@@ -46,32 +47,15 @@ export default function ToolEditForm({tool, id}: {tool: Inputs, id: String}) {
 
   // TODO: Change to PUT data as it modifies the item.
   // TODO: How to include id into fetch??
-  const putData = async (data: Inputs, id: String) => {
-      // const modifiedData = {
-      //   ...data
-      // }
-      try {
-        const response = await fetch(`/api/${id}`, {
-          method: "PUT",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json"
-          },
-        });
-  
-        if (!response.ok) throw new Error("HTTP ERROR! status: " + response.status);
-   
-        router.push("/");
-        revalidatePath("/");
-      } catch(error: any) {
-        console.log("fetch operation failed: " + error.message);
-      }
-    }
+
   
   // const putData = async (data: Inputs, id: String) => {
+  //   // console.log(`inside putData data: ${Object.values(data)}`);
+  //   // console.log("inside putData data: ");
+  //   // console.log(data);
   //   try {
-  //     const response = await fetch(`/api/${id}`, {
-  //       method: "PUT",
+  //     const response = await fetch(`/api/${id}/`, {
+  //       method: "POST",
   //       body: JSON.stringify(data),
   //       headers: {
   //         "Content-Type": "application/json"
@@ -79,17 +63,16 @@ export default function ToolEditForm({tool, id}: {tool: Inputs, id: String}) {
   //     });
 
   //     if (!response.ok) throw new Error("HTTP ERROR! status: " + response.status);
- 
+
   //     router.push("/");
   //     revalidatePath("/");
   //   } catch(error: any) {
   //     console.log("fetch operation failed: " + error.message);
   //   }
   // }
+  // const onSubmit: SubmitHandler<Inputs> = (data) => putData(data, id);
 
-
-
-  const onSubmit: SubmitHandler<Inputs> = (data) => putData(data, id);
+  const onSubmit: SubmitHandler<Inputs> = async (data) => EditTool(data, id);
 
   return (
     <div className="px-3">

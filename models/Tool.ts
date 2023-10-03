@@ -1,5 +1,7 @@
-const mongoose = require("mongoose");
 // TODO: handle date creation for date_created and date_modified
+
+// Comment out code block when running populatedb.js
+const mongoose = require("mongoose");
 interface ITool {
     _id: string,
     name: string;
@@ -35,5 +37,8 @@ const ToolSchema = new mongoose.Schema({
   date_modified: Date,
 });
 
+// Comment out code when running populatedb.js
 export default mongoose.models.Tool || mongoose.model("Tool", ToolSchema);
+
+// Use this for populatedb.js
 // module.exports = mongoose.model("Tool", ToolSchema);
