@@ -1,5 +1,4 @@
 "use server"
-import mongoose from "mongoose";
 import Tool from "@/models/Tool";
 import connectDB from "./connectdb";
 import { revalidatePath } from "next/cache";

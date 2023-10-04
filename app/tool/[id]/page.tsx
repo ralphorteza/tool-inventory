@@ -1,7 +1,6 @@
 import connectDB from "@/lib/connectdb";
 import Tool from "@/models/Tool"
 import ToolEditForm from "@/ui/tool-edit-form";
-import Link from "next/link";
 
 export default async function Page(
   { params }: 
@@ -10,7 +9,6 @@ export default async function Page(
 
   connectDB();
   const toolObj = await Tool.findById(params.id);
-  // console.log(toolObj);
   const tool = {
     _id: toolObj.id,
     name: toolObj.name,

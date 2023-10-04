@@ -1,10 +1,7 @@
 "use client";
-import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
-import connectDB from "@/lib/connectdb";
-import Tool from "@/models/Tool";
 import EditTool from "@/lib/editTool";
 
 enum TypeEnum {
@@ -31,46 +28,15 @@ type Inputs = {
   status: StatusEnum,
 };
 
-// TODO: PUT router
-// TODO: delete tool
 export default function ToolEditForm({tool, id}: {tool: Inputs, id: String}) {
   const router = useRouter();
   const prefill = tool;
-  // console.log(id);
-  // console.log(tool);
 
   const { register, handleSubmit, watch, formState: { errors }} = useForm<Inputs>({
     defaultValues: {
       ...tool
     }
   });
-
-  // TODO: Change to PUT data as it modifies the item.
-  // TODO: How to include id into fetch??
-
-  
-  // const putData = async (data: Inputs, id: String) => {
-  //   // console.log(`inside putData data: ${Object.values(data)}`);
-  //   // console.log("inside putData data: ");
-  //   // console.log(data);
-  //   try {
-  //     const response = await fetch(`/api/${id}/`, {
-  //       method: "POST",
-  //       body: JSON.stringify(data),
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //     });
-
-  //     if (!response.ok) throw new Error("HTTP ERROR! status: " + response.status);
-
-  //     router.push("/");
-  //     revalidatePath("/");
-  //   } catch(error: any) {
-  //     console.log("fetch operation failed: " + error.message);
-  //   }
-  // }
-  // const onSubmit: SubmitHandler<Inputs> = (data) => putData(data, id);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => EditTool(data, id);
 
