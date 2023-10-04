@@ -1,9 +1,10 @@
 "use client";
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import AddTool from "@/lib/addTool";
 
 // TODO: migrate form to useForm.
 // TODO: removed date objects from client-side.
@@ -40,30 +41,32 @@ type Props = {
 
 
 export default function ToolForm() {
-  const router = useRouter();
+  // const router = useRouter();
 
   const { register, handleSubmit, watch, formState: { errors }} = useForm<Inputs>();
 
+  const onSubmit: SubmitHandler<Inputs> = (data) => AddTool(data);
+
   // TODO: turn code block into a server action instead of old page api route.
-  const postData = async (data: Inputs) => {
-    try {
-      const response = await fetch('/api/new-tool/', {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        },
-      });
+  // const postData = async (data: Inputs) => {
+  //   try {
+  //     const response = await fetch('/api/new-tool/', {
+  //       method: "POST",
+  //       body: JSON.stringify(data),
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       },
+  //     });
 
-      if (!response.ok) throw new Error("HTTP ERROR! status: " + response.status);
-      router.push("/");
-      revalidatePath("/");
-    } catch(error: any) {
-      console.log("fetch operation failed" + error.message);
-    }
-  }
+  //     if (!response.ok) throw new Error("HTTP ERROR! status: " + response.status);
+  //     router.push("/");
+  //     revalidatePath("/");
+  //   } catch(error: any) {
+  //     console.log("fetch operation failed" + error.message);
+  //   }
+  // }
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => postData(data);
+  // const onSubmit: SubmitHandler<Inputs> = (data) => postData(data);
 
   return (
     <div className="px-3">

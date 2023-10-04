@@ -24,5 +24,4 @@ export default async function EditTool(data: any, id: String) {
   
   revalidatePath("/");
   redirect("/");
-  return;
 }
