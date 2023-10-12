@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 import EditTool from "@/lib/editTool";
+import { XIcon } from "./x-icon";
+import DeleteTool from "@/lib/deleteTool";
 
 enum TypeEnum {
   power_tool = "power-tool",
@@ -28,7 +30,7 @@ type Inputs = {
   status: StatusEnum,
 };
 
-export default function ToolEditForm({tool, id}: {tool: Inputs, id: String}) {
+export default function ToolEditForm({tool, id}: {tool: Inputs, id: string}) {
   const router = useRouter();
   const prefill = tool;
 
@@ -38,13 +40,23 @@ export default function ToolEditForm({tool, id}: {tool: Inputs, id: String}) {
     }
   });
 
+  const handleDelete = async (id: string) => DeleteTool(id);
   const onSubmit: SubmitHandler<Inputs> = async (data) => EditTool(data, id);
 
   return (
     <div className="px-3">
+      <button
+        type="button"
+        className="justify-self-end"
+        onClick={() => handleDelete(id)}
+      >
+        <XIcon />
+      </button>
       <header className="flex text-lg font-semibold justify-center items-center border-gray-400 border-b-2 mb-3">
         Modify Tool
       </header>
+      
+      
 
       <form
         onSubmit={handleSubmit(onSubmit)}
